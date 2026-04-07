@@ -62,7 +62,7 @@ function App() {
 
   return (
     <div className="app">
-      <h1 className="title">Task Manager(タスク管理アプリ)</h1>
+      <h1 className="title">Task Manager</h1>
       <h2>Reactで作成したタスク管理アプリです。</h2>
       <TodoInput addTodo={addTodo} />
       <TodoList
