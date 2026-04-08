@@ -6,7 +6,9 @@ function Home() {
       style={{
         background: "#f5f5f5",
         minHeight: "100vh",
+        margin: 0,
         padding: "40px",
+        boxSizing: "border-box",
       }}
     >
       {/* ヘッダー */}
