@@ -10,14 +10,14 @@ function App() {
           display: "flex",
           justifyContent: "center",
           gap: "30px",
-          padding: "20px",
+          padding: "15px",
           background: "#222",
         }}
       >
-        <Link to="/" style={{ color: "white", textDecoration: "none" }}>
+        <Link to="/" style={{ color: "white" }}>
           Home
         </Link>
-        <Link to="/task" style={{ color: "white", textDecoration: "none" }}>
+        <Link to="/task" style={{ color: "white" }}>
           Task
         </Link>
       </nav>
