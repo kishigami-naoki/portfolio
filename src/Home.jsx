@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Home() {
   return (
     <div style={{ padding: "40px", textAlign: "center" }}>
@@ -8,7 +10,20 @@ function Home() {
       <p>HTML / CSS / JavaScript / React</p>
 
       <h2>制作物</h2>
-      <p>・タスク管理アプリ</p>
+      <div
+        style={{
+          background: "#fff",
+          padding: "20px",
+          borderRadius: "10px",
+          boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
+          maxWidth: "300px",
+          margin: "20px auto",
+        }}
+      >
+        <h3>タスク管理アプリ</h3>
+        <p>Reactで作成したTodoアプリ</p>
+        <Link to="/task">見る →</Link>
+      </div>
 
       <h2>強み</h2>
       <p>継続して学習し、実際に動くアプリを作れること</p>
