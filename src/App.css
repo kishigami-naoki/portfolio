@@ -11,6 +11,7 @@ body {
   max-width: 500px;
   margin: 40px auto;
   padding: 20px;
+  width: 100%;
   box-sizing: border-box;
   background: #fff;
   border-radius: 12px;
@@ -226,6 +227,7 @@ li button:hover {
 @media (max-width: 600px) {
   .app {
     padding: 10px;
+    margin: 10px;
   }
 
   h1,
