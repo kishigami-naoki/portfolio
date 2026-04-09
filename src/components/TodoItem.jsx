@@ -22,13 +22,13 @@ function TodoItem({ todo, deleteTodo, toggleTodo, editTodo }) {
         />
 
         <div
+          className="todo-text"
           onClick={() => {
             if (!todo.completed) {
               setIsEditing(true);
               setEditText(todo.text);
             }
           }}
-          style={{ flex: 1, minWidth: 0 }}
         >
           {todo.text}
         </div>
