@@ -21,16 +21,17 @@ function TodoItem({ todo, deleteTodo, toggleTodo, editTodo }) {
           onChange={() => toggleTodo(todo.id)}
         />
 
-        <span
+        <div
           onClick={() => {
             if (!todo.completed) {
               setIsEditing(true);
               setEditText(todo.text);
             }
           }}
+          style={{ flex: 1, minWidth: 0 }}
         >
           {todo.text}
-        </span>
+        </div>
 
         <button onClick={() => deleteTodo(todo.id)}>削除</button>
       </li>

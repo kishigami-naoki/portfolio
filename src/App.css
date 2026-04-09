@@ -76,6 +76,7 @@ li {
   border: 1px solid #eee;
   border-radius: 10px;
   margin-bottom: 10px;
+  overflow: hidden;
   transition: all 0.25s ease;
   width: 100%;
   box-sizing: border-box;
@@ -98,6 +99,14 @@ li.completed {
 li.completed span {
   text-decoration: line-through;
   color: #9ca3af;
+}
+
+li div {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /* テキスト */
