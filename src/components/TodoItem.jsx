@@ -14,7 +14,15 @@ function TodoItem({ todo, deleteTodo, toggleTodo, editTodo }) {
   // 通常表示
   if (!isEditing) {
     return (
-      <li className={todo.completed ? "completed" : ""}>
+      <li
+        className={todo.completed ? "completed" : ""}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "8px",
+          width: "100%",
+        }}
+      >
         <input
           type="checkbox"
           checked={todo.completed}
@@ -30,17 +38,24 @@ function TodoItem({ todo, deleteTodo, toggleTodo, editTodo }) {
           }}
           title="タップで編集"
           style={{
-            textDecoration: todo.completed ? "line-through" : "none",
-            color: todo.completed ? "#9ca3af" : "black",
-            cursor: "pointer",
-            padding: "4px 8px", // ← タップしやすく
-            display: "inline-block",
+            flex: 1,
+            minWidth: 0,
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap",
           }}
         >
           {todo.text}
         </span>
 
-        <button onClick={() => deleteTodo(todo.id)}>削除</button>
+        <button
+          onClick={() => deleteTodo(todo.id)}
+          style={{
+            flexShrink: 0,
+          }}
+        >
+          削除
+        </button>
       </li>
     );
   }
