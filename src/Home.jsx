@@ -42,10 +42,10 @@ function Home() {
         style={{
           background: "#fff",
           padding: "20px",
-          borderRadius: "10px",
+          borderRadius: "12px",
           maxWidth: "600px",
-          margin: "0 auto 30px",
-          boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
+          margin: "0 auto 40px",
+          boxShadow: "0 8px 20px rgba(0,0,0,0.15)",
         }}
       >
         <h2>スキル</h2>
@@ -93,6 +93,13 @@ function Home() {
                 color: "#fff",
                 borderRadius: "5px",
                 textDecoration: "none",
+                boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.background = "#556cd6";
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.background = "#667eea";
               }}
             >
               アプリを見る
