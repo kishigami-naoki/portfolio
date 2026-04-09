@@ -3,21 +3,41 @@ import Home from "./Home";
 import Task from "./Task";
 
 function App() {
+  const isMobile = window.innerWidth < 600;
+
   return (
     <Router>
       <nav
         style={{
           display: "flex",
+          flexDirection: isMobile ? "column" : "row",
+          alignItems: "center",
           justifyContent: "center",
-          gap: "30px",
+          gap: isMobile ? "10px" : "30px",
           padding: "15px",
           background: "#222",
         }}
       >
-        <Link to="/" style={{ color: "white" }}>
+        <Link
+          to="/"
+          style={{
+            color: "white",
+            textDecoration: "none",
+          }}
+          onMouseEnter={(e) => (e.target.style.color = "#aaa")}
+          onMouseLeave={(e) => (e.target.style.color = "white")}
+        >
           Home
         </Link>
-        <Link to="/task" style={{ color: "white" }}>
+        <Link
+          to="/task"
+          style={{
+            color: "white",
+            textDecoration: "none",
+          }}
+          onMouseEnter={(e) => (e.target.style.color = "#aaa")}
+          onMouseLeave={(e) => (e.target.style.color = "white")}
+        >
           Task
         </Link>
       </nav>
