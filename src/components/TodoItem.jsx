@@ -4,11 +4,14 @@ function TodoItem({ todo, deleteTodo, toggleTodo, editTodo }) {
   const [isEditing, setIsEditing] = useState(false);
   const [editText, setEditText] = useState(todo.text);
   const inputRef = useRef(null);
+
   useEffect(() => {
     if (isEditing) {
       inputRef.current.focus();
     }
   }, [isEditing]);
+
+  // 通常表示
   if (!isEditing) {
     return (
       <li className={todo.completed ? "completed" : ""}>
@@ -19,25 +22,30 @@ function TodoItem({ todo, deleteTodo, toggleTodo, editTodo }) {
         />
 
         <span
-          onDoubleClick={() => {
+          onClick={() => {
             if (!todo.completed) {
               setIsEditing(true);
               setEditText(todo.text);
             }
           }}
-          title="ダブルクリックで編集"
+          title="タップで編集"
           style={{
             textDecoration: todo.completed ? "line-through" : "none",
             color: todo.completed ? "#9ca3af" : "black",
-            cursor: todo.completed ? "not-allowed" : "pointer",
+            cursor: "pointer",
+            padding: "4px 8px", // ← タップしやすく
+            display: "inline-block",
           }}
         >
           {todo.text}
         </span>
+
         <button onClick={() => deleteTodo(todo.id)}>削除</button>
       </li>
     );
   }
+
+  // 編集モード
   return (
     <li className={`fade-in ${todo.completed ? "completed" : ""}`}>
       <input
@@ -57,7 +65,12 @@ function TodoItem({ todo, deleteTodo, toggleTodo, editTodo }) {
             setIsEditing(false);
           }
         }}
+        style={{
+          fontSize: "16px", // ← スマホでズーム防止
+          padding: "6px",
+        }}
       />
+
       <button
         onClick={() => {
           if (editText.trim() === "") return;
