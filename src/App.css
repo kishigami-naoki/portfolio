@@ -67,13 +67,16 @@ ul {
 li {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 8px;
   padding: 14px;
   border: 1px solid #eee;
   border-radius: 10px;
   margin-bottom: 10px;
   transition: all 0.25s ease;
-  list-style: none;
+}
+
+li button {
+  flex-shrink: 0;
 }
 
 li:hover {
@@ -94,8 +97,11 @@ li.completed span {
 /* テキスト */
 li span {
   flex: 1;
-  margin-left: 10px;
-  cursor: pointer;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #111;
 }
 
 /* ボタン共通 */
