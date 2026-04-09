@@ -21,6 +21,7 @@ function TodoItem({ todo, deleteTodo, toggleTodo, editTodo }) {
           alignItems: "center",
           gap: "8px",
           width: "100%",
+          padding: "8px 0",
         }}
       >
         <input
@@ -36,13 +37,13 @@ function TodoItem({ todo, deleteTodo, toggleTodo, editTodo }) {
               setEditText(todo.text);
             }
           }}
-          title="タップで編集"
           style={{
             flex: 1,
             minWidth: 0,
             overflow: "hidden",
             textOverflow: "ellipsis",
             whiteSpace: "nowrap",
+            cursor: "pointer",
           }}
         >
           {todo.text}
@@ -52,6 +53,7 @@ function TodoItem({ todo, deleteTodo, toggleTodo, editTodo }) {
           onClick={() => deleteTodo(todo.id)}
           style={{
             flexShrink: 0,
+            padding: "6px 10px",
           }}
         >
           削除
