@@ -14,16 +14,7 @@ function TodoItem({ todo, deleteTodo, toggleTodo, editTodo }) {
   // 通常表示
   if (!isEditing) {
     return (
-      <li
-        className={todo.completed ? "completed" : ""}
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "8px",
-          width: "100%",
-          padding: "8px 0",
-        }}
-      >
+      <li className={todo.completed ? "completed" : ""}>
         <input
           type="checkbox"
           checked={todo.completed}
@@ -37,27 +28,11 @@ function TodoItem({ todo, deleteTodo, toggleTodo, editTodo }) {
               setEditText(todo.text);
             }
           }}
-          style={{
-            flex: 1,
-            minWidth: 0,
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-            whiteSpace: "nowrap",
-            cursor: "pointer",
-          }}
         >
           {todo.text}
         </span>
 
-        <button
-          onClick={() => deleteTodo(todo.id)}
-          style={{
-            flexShrink: 0,
-            padding: "6px 10px",
-          }}
-        >
-          削除
-        </button>
+        <button onClick={() => deleteTodo(todo.id)}>削除</button>
       </li>
     );
   }
