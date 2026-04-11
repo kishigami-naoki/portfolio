@@ -59,7 +59,7 @@ function TodoItem({ todo, deleteTodo, toggleTodo, editTodo }) {
           }
         }}
         style={{
-          fontSize: "16px", // ← スマホでズーム防止
+          fontSize: "16px",
           padding: "6px",
         }}
       />

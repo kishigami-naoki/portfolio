@@ -128,9 +128,43 @@ li button {
   background: #6b7280;
   color: white;
 }
+/* 天気アプリ装飾 */
+.weather-box {
+  margin-top: 20px;
+  padding: 24px;
+  border-radius: 16px;
+  color: white;
+  font-weight: 500;
+  background: linear-gradient(135deg, #60a5fa, #3b82f6); /* ← グラデ */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease; /* ← これ大事 */
+}
 
-/* スマホ用 */
+.weather-box:hover {
+  transform: translateY(-3px);
+}
+
+/* 天気テキスト */
+.weather-box h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* アイコン */
+.weather-icon {
+  font-size: 48px;
+}
+
+/* スマホ用微調整 */
 @media (max-width: 600px) {
+  .weather-box {
+    padding: 16px;
+  }
+
+  .weather-icon {
+    font-size: 40px;
+  }
+
   .app {
     padding: 10px;
     margin: 10px;
