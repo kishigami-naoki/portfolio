@@ -52,7 +52,7 @@ function Weather() {
         setError("予期せぬエラー");
       }
     } finally {
-      setloading(false);
+      setLoading(false);
     }
   };
 

@@ -11,7 +11,6 @@ function TodoItem({ todo, deleteTodo, toggleTodo, editTodo }) {
     }
   }, [isEditing]);
 
-  // 通常表示
   if (!isEditing) {
     return (
       <li className={todo.completed ? "completed" : ""}>
@@ -38,7 +37,6 @@ function TodoItem({ todo, deleteTodo, toggleTodo, editTodo }) {
     );
   }
 
-  // 編集モード
   return (
     <li className={`fade-in ${todo.completed ? "completed" : ""}`}>
       <input
