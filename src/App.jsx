@@ -5,17 +5,27 @@ import Task from "./Task";
 import { NavLink } from "react-router-dom";
 
 function App() {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 600);
+  const [isMobile, setIsMobile] = useState(false);
+
+  const [darkMode, setDarkMode] = useState(() => {
+    return localStorage.getItem("darkMode") === "true";
+  });
 
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 600);
     };
 
+    handleResize();
     window.addEventListener("resize", handleResize);
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  useEffect(() => {
+    document.body.className = darkMode ? "dark" : "";
+    localStorage.setItem("darkMode", darkMode);
+  }, [darkMode]);
 
   return (
     <Router>
@@ -51,6 +61,20 @@ function App() {
         >
           Task
         </NavLink>
+        <button
+          onClick={() => setDarkMode(!darkMode)}
+          style={{
+            marginLeft: "auto",
+            padding: "6px 12px",
+            borderRadius: "6px",
+            border: "none",
+            cursor: "pointer",
+            background: darkMode ? "#facc15" : "#374151",
+            color: darkMode ? "#111" : "#fff",
+          }}
+        >
+          {darkMode ? "☀️" : "🌙"}
+        </button>
       </nav>
 
       <Routes>

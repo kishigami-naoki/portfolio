@@ -20,15 +20,17 @@ body {
 
 /* タイトル */
 .title {
-  text-align: center;
-  margin-bottom: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #111827;
+  margin-bottom: 10px;
 }
 
 /* 入力フォーム */
 form {
   display: flex;
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 form input {
@@ -53,6 +55,11 @@ form button {
   border-radius: 999px;
   cursor: pointer;
   flex-shrink: 0;
+  opacity: 0.9;
+}
+
+form button:hover {
+  opacity: 1;
 }
 
 /* Todoリスト */
@@ -75,6 +82,30 @@ li {
   transition: all 0.25s ease;
   width: 100%;
   box-sizing: border-box;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+li:hover {
+  background: #f1f5f9;
+  transform: translateY(-1px);
+}
+
+/* タスク */
+.task-count {
+  margin-top: 10px;
+  color: #6b7280;
+  font-size: 14px;
 }
 
 /* チェックボックス */
@@ -82,7 +113,17 @@ li input[type="checkbox"] {
   flex-shrink: 0;
 }
 
-/* テキスト（←ここが一番大事） */
+/* チェック時　*/
+.completed {
+  background: #f3f4f6;
+}
+
+.completed .todo-text {
+  text-decoration: line-through;
+  color: #9ca3af;
+}
+
+/* テキスト */
 .todo-text {
   flex: 1;
   min-width: 0;
@@ -95,18 +136,25 @@ li input[type="checkbox"] {
 /* 削除ボタン */
 li button {
   flex-shrink: 0;
-  background: #ef4444;
+  background: #f87171;
   color: white;
   padding: 6px 12px;
   border-radius: 6px;
+  transition: all 0.2s ease;
   border: none;
   cursor: pointer;
+}
+
+li button:hover {
+  opacity: 0.85;
+  background: #ef4444;
 }
 
 /* フィルター */
 .filter {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 10px;
   margin-top: 20px;
 }
 
@@ -114,11 +162,13 @@ li button {
   background: #e5e7eb;
   border-radius: 999px;
   padding: 6px 12px;
+  transition: all 0.2s ease;
 }
 
 .filter button.active {
   background: #4f46e5;
   color: white;
+  transform: scale(0.97);
 }
 
 /* クリアボタン */
@@ -130,7 +180,8 @@ li button {
 }
 /* 天気アプリ装飾 */
 .weather-box {
-  margin-top: 20px;
+  margin-top: 30px;
+  opacity: 0.95;
   padding: 24px;
   border-radius: 16px;
   color: white;
@@ -153,6 +204,56 @@ li button {
 /* アイコン */
 .weather-icon {
   font-size: 48px;
+}
+
+/* ダークモード */
+body.dark {
+  background-color: #111827;
+  color: #f9fafb;
+}
+
+/* nav */
+body.dark nav {
+  background: #111;
+}
+
+/* カード */
+body.dark .app,
+body.dark .weather-box {
+  background: #1f2937;
+  color: #f9fafb;
+}
+
+/* Todo */
+body.dark li {
+  background: #1f2937;
+  border-color: #374151;
+}
+
+body.dark li:hover {
+  background: #374151;
+}
+
+/* input */
+body.dark input {
+  background: #111827;
+  color: #f9fafb;
+  border: 1px solid #374151;
+}
+
+/* フィルター */
+body.dark .filter button {
+  background: #374151;
+  color: #f9fafb;
+}
+
+body.dark .filter button.active {
+  background: #6366f1;
+}
+
+/* 削除ボタン */
+body.dark li button {
+  background: #dc2626;
 }
 
 /* スマホ用微調整 */

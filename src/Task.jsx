@@ -71,7 +71,7 @@ function App() {
         toggleTodo={toggleTodo}
         editTodo={editTodo}
       />
-      <Filter filter={filter} setFilter={setFilter} />
+      <Filter filter={filter} onChangeFilter={setFilter} />
       <p>残りタスク{activeCount}</p>
       <button className="clear-btn" onClick={clearCompleted}>
         クリア
