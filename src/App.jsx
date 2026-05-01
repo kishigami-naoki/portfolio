@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Home from "./Home";
 import Task from "./Task";
 import { NavLink } from "react-router-dom";
+import NotFound from "./NotFound";
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);
@@ -32,39 +33,51 @@ function App() {
       <nav
         style={{
           display: "flex",
-          flexDirection: isMobile ? "column" : "row",
           alignItems: "center",
-          justifyContent: "center",
-          gap: isMobile ? "10px" : "30px",
-          padding: "15px",
+          justifyContent: "space-between",
+          padding: "15px 20px",
           background: "#222",
         }}
       >
-        <NavLink
-          to="/"
-          style={({ isActive }) => ({
-            color: isActive ? "#4ade80" : "white",
-            textDecoration: "none",
-            padding: "10px",
-          })}
-        >
-          Home
-        </NavLink>
+        {/* 左（空 or ロゴ） */}
+        <div style={{ width: "60px" }}></div>
 
-        <NavLink
-          to="/task"
-          style={({ isActive }) => ({
-            color: isActive ? "#4ade80" : "white",
-            textDecoration: "none",
-            padding: "10px",
-          })}
+        {/* 中央ナビ */}
+        <div
+          style={{
+            display: "flex",
+            gap: isMobile ? "10px" : "30px",
+            flexDirection: isMobile ? "column" : "row",
+            alignItems: "center",
+          }}
         >
-          Task
-        </NavLink>
+          <NavLink
+            to="/"
+            style={({ isActive }) => ({
+              color: isActive ? "#4ade80" : "white",
+              textDecoration: "none",
+              padding: "10px",
+            })}
+          >
+            Home
+          </NavLink>
+
+          <NavLink
+            to="/task"
+            style={({ isActive }) => ({
+              color: isActive ? "#4ade80" : "white",
+              textDecoration: "none",
+              padding: "10px",
+            })}
+          >
+            Task
+          </NavLink>
+        </div>
+
+        {/* 右ボタン */}
         <button
           onClick={() => setDarkMode(!darkMode)}
           style={{
-            marginLeft: "auto",
             padding: "6px 12px",
             borderRadius: "6px",
             border: "none",
@@ -80,6 +93,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/task" element={<Task />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );
