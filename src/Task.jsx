@@ -3,7 +3,7 @@ import TodoInput from "./components/TodoInput";
 import TodoList from "./components/TodoList";
 import Filter from "./components/Filter";
 import "./App.css";
-import Weather from "./components/Wather";
+import Weather from "./components/Weather";
 
 function App() {
   const [todos, setTodos] = useState(() => {
