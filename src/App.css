@@ -131,12 +131,14 @@ ul {
   padding: 0;
   margin: 0;
   width: 100%;
+  overflow: visible;
 }
 
 /* 各Todo */
 li {
   display: flex;
-  align-items: center;
+  justify-content: space-between;
+  align-items: flex-start;
   gap: 8px;
   padding: 14px;
   border: 1px solid #eee;
@@ -146,6 +148,39 @@ li {
   width: 100%;
   box-sizing: border-box;
   animation: fadeIn 0.2s ease;
+}
+
+.todo-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.todo-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+.todo-dates {
+  font-size: 12px;
+  color: #6b7280;
+  line-height: 1.4;
+}
+
+.status {
+  display: inline-block;
+  min-width: 70px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.status-buttons {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
 }
 
 @keyframes fadeIn {
@@ -359,10 +394,19 @@ body.dark li button {
   background: #dc2626;
 }
 
+.delete-btn {
+  width: auto;
+  min-width: 80px;
+}
+
 /* スマホ用微調整 */
 @media (max-width: 600px) {
   .weather-box {
     padding: 16px;
+  }
+
+  .todo-actions {
+    width: 100%;
   }
 
   .weather-icon {
@@ -394,7 +438,7 @@ body.dark li button {
     align-items: stretch;
   }
 
-  li button {
+  .status-buttons button {
     width: 100%;
     padding: 10px 12px;
   }

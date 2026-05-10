@@ -8,15 +8,24 @@ import Weather from "./components/Weather";
 function App() {
   const [todos, setTodos] = useState(() => {
     const savedTodos = localStorage.getItem("todos");
-    return savedTodos ? JSON.parse(savedTodos) : [];
+
+    return savedTodos
+      ? JSON.parse(savedTodos).map((todo) => ({
+          ...todo,
+          status: todo.status || (todo.completed ? "done" : "todo"),
+        }))
+      : [];
   });
 
   const addTodo = (text) => {
     if (!text.trim()) return;
+    const now = new Date().toLocaleString();
     const newTodo = {
       id: Date.now(),
       text,
-      completed: false,
+      status: "todo",
+      createdAt: now,
+      updatedAt: now,
     };
 
     setTodos((prevTodos) => [...prevTodos, newTodo]);
@@ -26,10 +35,12 @@ function App() {
     setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
   };
 
-  const toggleTodo = (id) => {
+  const updateStatus = (id, status) => {
     setTodos((prevTodos) =>
       prevTodos.map((todo) =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo,
+        todo.id === id
+          ? { ...todo, status, updatedAt: new Date().toLocaleString() }
+          : todo,
       ),
     );
   };
@@ -37,21 +48,28 @@ function App() {
   const [filter, setFilter] = useState("all");
 
   const filteredTodos = todos.filter((todo) => {
-    if (filter === "active") return !todo.completed;
-    if (filter === "completed") return todo.completed;
+    if (filter === "todo") return todo.status === "todo";
+    if (filter === "doing") return todo.status === "doing";
+    if (filter === "done") return todo.status === "done";
     return true;
   });
 
-  const activeCount = todos.filter((todo) => !todo.completed).length;
+  const activeCount = todos.filter((todo) => todo.status !== "done").length;
 
   const clearCompleted = () => {
-    setTodos((prevTodos) => prevTodos.filter((todo) => !todo.completed));
+    setTodos((prevTodos) => prevTodos.filter((todo) => todo.status !== "done"));
   };
 
   const editTodo = (id, newText) => {
     setTodos((prevTodos) =>
       prevTodos.map((todo) =>
-        todo.id === id ? { ...todo, text: newText } : todo,
+        todo.id === id
+          ? {
+              ...todo,
+              text: newText,
+              updatedAt: new Date().toLocaleString(),
+            }
+          : todo,
       ),
     );
   };
@@ -68,7 +86,7 @@ function App() {
       <TodoList
         todos={filteredTodos}
         deleteTodo={deleteTodo}
-        toggleTodo={toggleTodo}
+        updateStatus={updateStatus}
         editTodo={editTodo}
       />
       <Filter filter={filter} onChangeFilter={setFilter} />

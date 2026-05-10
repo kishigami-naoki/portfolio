@@ -1,4 +1,6 @@
+import { scale } from "framer-motion";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 function TodoInput({ addTodo }) {
   const [inputValue, setInputValue] = useState("");
@@ -34,7 +36,9 @@ function TodoInput({ addTodo }) {
         }}
       />
 
-      <button
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
         type="submit"
         style={{
           flexShrink: 0,
@@ -42,7 +46,7 @@ function TodoInput({ addTodo }) {
         }}
       >
         追加
-      </button>
+      </motion.button>
     </form>
   );
 }

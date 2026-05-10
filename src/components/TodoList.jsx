@@ -1,17 +1,20 @@
 import TodoItem from "./TodoItem";
+import { AnimatePresence } from "framer-motion";
 
-function TodoList({ todos, deleteTodo, toggleTodo, editTodo }) {
+function TodoList({ todos, deleteTodo, updateStatus, editTodo }) {
   return (
     <ul>
-      {todos.map((todo) => (
-        <TodoItem
-          key={todo.id}
-          todo={todo}
-          deleteTodo={deleteTodo}
-          toggleTodo={toggleTodo}
-          editTodo={editTodo}
-        />
-      ))}
+      <AnimatePresence>
+        {todos.map((todo) => (
+          <TodoItem
+            key={todo.id}
+            todo={todo}
+            deleteTodo={deleteTodo}
+            updateStatus={updateStatus}
+            editTodo={editTodo}
+          />
+        ))}
+      </AnimatePresence>
     </ul>
   );
 }
