@@ -1,16 +1,93 @@
-# React + Vite
+# Task Manager
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Reactで作成したタスク管理アプリです。
 
-Currently, two official plugins are available:
+## 制作目的
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+React学習のアウトプットとして、実際にユーザーが使うことを意識したタスク管理アプリを制作しました。
 
-## React Compiler
+単純なTodo機能だけでなく、状態管理・コンポーネント設計・API通信・レスポンシブ対応など、実務でも使われる機能を意識して実装しています。
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## URL
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### デモサイト
+
+- [https://portfolio-six-wheat-citr3r6ot6.vercel.app/]
+
+### GitHub
+
+- [https://github.com/kishigami-naoki/portfolio]
+
+---
+
+## 使用技術
+
+- React
+- Vite
+- React Router
+- Framer Motion
+- CSS
+- LocalStorage
+- Open-Meteo API
+- Vercel
+
+---
+
+## 主な機能
+
+- タスク追加
+- タスク編集
+- タスク削除
+- ステータス変更（未対応 / 対応中 / 完了）
+- フィルター機能
+- LocalStorage保存
+- ダークモード
+- 天気情報取得
+- レスポンシブ対応
+- アニメーション実装
+
+---
+
+## 工夫した点
+
+### UI/UX
+
+- スマホでも見やすいレスポンシブデザインを意識
+- ダークモードを実装し、視認性を向上
+- Framer Motionを使い、タスク追加・削除時に自然なアニメーションを追加
+- ボタン配置や余白を調整し、操作しやすいUIを意識
+
+### React設計
+
+- コンポーネントを分割して保守性を向上
+- propsを利用して状態管理を整理
+- map/filterを利用してタスク一覧や絞り込みを実装
+- LocalStorageとuseEffectを使い、データ保持を実装
+
+---
+
+## 苦労した点
+
+- レスポンシブ対応時にボタン幅やレイアウト崩れが発生し、Flexboxの調整に苦労した
+- Framer Motion導入時にAnimatePresence周りでエラーが発生し、コンポーネント構成を見直した
+- 状態更新時に再レンダリングの挙動を理解するのに時間がかかった
+- ダークモード対応時に各コンポーネントの色管理を統一するのが難しかった
+
+---
+
+## 今後追加したい機能
+
+- ドラッグ&ドロップによる並び替え
+- Firebaseを利用したデータ永続化
+- ログイン機能
+- 締切日設定
+- 優先度設定
+- 検索機能
+
+---
+
+## スクリーンショット
+
+※ 後から画像追加予定

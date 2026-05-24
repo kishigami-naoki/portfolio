@@ -1,10 +1,22 @@
 import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 
 function TodoItem({ todo, deleteTodo, updateStatus, editTodo }) {
   const [isEditing, setIsEditing] = useState(false);
   const [editText, setEditText] = useState(todo.text);
   const inputRef = useRef(null);
+
+  const { attributes, listeners, setNodeRef, transform, transition } =
+    useSortable({
+      id: todo.id,
+    });
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+  };
 
   useEffect(() => {
     if (isEditing) {
@@ -15,6 +27,10 @@ function TodoItem({ todo, deleteTodo, updateStatus, editTodo }) {
   return (
     <motion.li
       layout
+      ref={setNodeRef}
+      style={style}
+      {...attributes}
+      {...listeners}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, x: -100 }}

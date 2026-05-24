@@ -4,6 +4,12 @@ import Home from "./Home";
 import Task from "./Task";
 import { NavLink } from "react-router-dom";
 import NotFound from "./NotFound";
+import { DndContext, closestCenter } from "@dnd-kit/core";
+import {
+  arrayMove,
+  SortableContext,
+  verticalListSortingStrategy,
+} from "@dnd-kit/sortable";
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);

@@ -4,6 +4,12 @@ import TodoList from "./components/TodoList";
 import Filter from "./components/Filter";
 import "./App.css";
 import Weather from "./components/Weather";
+import { closestCenter, DndContext } from "@dnd-kit/core";
+import {
+  SortableContext,
+  verticalListSortingStrategy,
+  arrayMove,
+} from "@dnd-kit/sortable";
 
 function App() {
   const [todos, setTodos] = useState(() => {
@@ -54,6 +60,20 @@ function App() {
     return true;
   });
 
+  const handleDragEnd = (event) => {
+    const { active, over } = event;
+
+    if (!over || active.id === over.id) return;
+
+    setTodos((items) => {
+      const oldIndex = items.findIndex((item) => item.id === active.id);
+
+      const newIndex = items.findIndex((item) => item.id === over.id);
+
+      return arrayMove(items, oldIndex, newIndex);
+    });
+  };
+
   const activeCount = todos.filter((todo) => todo.status !== "done").length;
 
   const clearCompleted = () => {
@@ -83,12 +103,19 @@ function App() {
       <h1 className="title">Task Manager</h1>
       <h2>Reactで作成したタスク管理アプリです。</h2>
       <TodoInput addTodo={addTodo} />
-      <TodoList
-        todos={filteredTodos}
-        deleteTodo={deleteTodo}
-        updateStatus={updateStatus}
-        editTodo={editTodo}
-      />
+      <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+        <SortableContext
+          items={filteredTodos.map((todo) => todo.id)}
+          strategy={verticalListSortingStrategy}
+        >
+          <TodoList
+            todos={filteredTodos}
+            deleteTodo={deleteTodo}
+            updateStatus={updateStatus}
+            editTodo={editTodo}
+          />
+        </SortableContext>
+      </DndContext>
       <Filter filter={filter} onChangeFilter={setFilter} />
       <p>残りタスク{activeCount}</p>
       <button className="clear-btn" onClick={clearCompleted}>
